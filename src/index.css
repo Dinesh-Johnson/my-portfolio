@@ -1,0 +1,36 @@
+/* ========= GLOBAL THEME VARIABLES ========= */
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+}
+
+[data-theme="dark"] {
+  --bg: #121212;
+  --text: #ffffff;
+}
+
+/* ========= GLOBAL BODY STYLING ========= */
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ========= REMOVE ANY DEFAULT SPACING FROM VITE ========= */
+#root {
+  width: 100%;
+}
+
+/* ========= GLOBAL LINK STYLE ========= */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ========= SCROLL SMOOTH ========= */
+html {
+  scroll-behavior: smooth;
+}
