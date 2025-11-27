@@ -1,36 +1,68 @@
-/* ========= GLOBAL THEME VARIABLES ========= */
-:root {
-  --bg: #ffffff;
-  --text: #000000;
+/* ========= FULL WEBSITE BLACK BACKGROUND ========= */
+html, body, section, div, .container, .row, .col, main {
+  background: #000 !important;
+  color: #fff !important;
 }
 
-[data-theme="dark"] {
-  --bg: #121212;
-  --text: #ffffff;
+/* Remove all Bootstrap whites */
+.bg-white, .bg-light, .bg-body, .bg-transparent {
+  background: #000 !important;
 }
 
-/* ========= GLOBAL BODY STYLING ========= */
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  transition: background 0.3s ease, color 0.3s ease;
+/* Text color fix */
+.text-dark {
+  color: #fff !important;
 }
 
-/* ========= REMOVE ANY DEFAULT SPACING FROM VITE ========= */
-#root {
-  width: 100%;
+/* Card backgrounds (skills & projects) */
+.card, 
+.skill-card, 
+.project-card {
+  background: #0a0a0a !important;
+  color: #fff !important;
+  border: 1px solid #222 !important;
 }
 
-/* ========= GLOBAL LINK STYLE ========= */
-a {
-  text-decoration: none;
-  color: inherit;
+/* Remove unwanted box shadows */
+.card, .shadow, .shadow-lg {
+  box-shadow: none !important;
 }
 
-/* ========= SCROLL SMOOTH ========= */
-html {
-  scroll-behavior: smooth;
+/* Buttons clean and simple */
+.btn-light {
+  background: #fff !important;
+  color: #000 !important;
 }
+
+.btn-dark {
+  background: #111 !important;
+  color: #fff !important;
+}
+
+/* Keep buttons readable */
+.btn-outline-light {
+  border-color: #fff !important;
+  color: #fff !important;
+}
+
+/* Icon color (contrast only — NO GLOW) */
+.skill-icon {
+  font-size: 2.2rem;
+}
+
+/* Icon normal colors (no glow) */
+.react { color: #61dafb; }
+.js { color: #f7df1e; }
+.java { color: #ff8c00; }
+.spring { color: #6db33f; }
+.mysql { color: #00b8ff; }
+.html { color: #ff5722; }
+.css { color: #2965f1; }
+.bt { color: #9b59ff; }
+.git { color: #f1502f; }
+.json { color: #f0c674; }
+
+.lead, p, h1, h2, h3, h4, h5 {
+  color: #fff !important;
+}
+
