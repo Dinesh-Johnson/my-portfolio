@@ -40,7 +40,7 @@ function Hero() {
             <img src={profilePic} className="about-img" alt="Dinesh" />
           </div>
 
-          <p className="location-text mt-3 fade-up-delayed">📍 Coimbatore, India</p>
+          <p className="location-text mt-3 fade-up-delayed">📍 Namakkal, India</p>
 
           <div className="social-links fade-up-delayed">
             <a href="https://github.com/Dinesh-Johnson" target="_blank" className="social-icon">
