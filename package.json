@@ -9,8 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "push-deploy": "git add . && git commit -m \"Auto deploy\" && git push origin main && npm run deploy"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "aos": "^2.3.4",
