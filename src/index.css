@@ -1,68 +1,73 @@
-/* ========= FULL WEBSITE BLACK BACKGROUND ========= */
-html, body, section, div, .container, .row, .col, main {
-  background: #000 !important;
-  color: #fff !important;
+@import "bootstrap-icons/font/bootstrap-icons.css";
+/* ===== PURE MODERN BLACK THEME ===== */
+:root {
+  --bg: #000;
+  --text: #fff;
+  --subtext: #bbbbbb;
+  --card-bg: #0a0a0a;
+  --border: #1a1a1a;
+  --accent: #ffffff;
 }
 
-/* Remove all Bootstrap whites */
-.bg-white, .bg-light, .bg-body, .bg-transparent {
-  background: #000 !important;
+html, body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", system-ui, sans-serif;
 }
 
-/* Text color fix */
-.text-dark {
-  color: #fff !important;
+/* Kill all Bootstrap whites */
+.bg-light, .bg-white, .bg-body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
 }
 
-/* Card backgrounds (skills & projects) */
-.card, 
-.skill-card, 
-.project-card {
-  background: #0a0a0a !important;
-  color: #fff !important;
-  border: 1px solid #222 !important;
+/* Section spacing like adittya.site */
+section {
+  padding: 80px 0;
 }
 
-/* Remove unwanted box shadows */
-.card, .shadow, .shadow-lg {
-  box-shadow: none !important;
+/* Section heading style */
+section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
 }
 
-/* Buttons clean and simple */
-.btn-light {
-  background: #fff !important;
-  color: #000 !important;
+section h2::after {
+  content: "";
+  width: 60px;
+  height: 3px;
+  background: var(--accent);
+  display: block;
+  margin: 10px auto 0;
+  opacity: 0.5;
 }
 
-.btn-dark {
-  background: #111 !important;
-  color: #fff !important;
+/* Soft divider line between sections */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: #111;
+  margin: 30px 0;
 }
 
-/* Keep buttons readable */
-.btn-outline-light {
-  border-color: #fff !important;
-  color: #fff !important;
+/* ===== CARDS ===== */
+.card, .skill-card, .project-card {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border) !important;
+  padding: 20px;
+  text-align: center;
 }
 
-/* Icon color (contrast only — NO GLOW) */
+.card:hover, .skill-card:hover, .project-card:hover {
+  border-color: #333;
+}
+
+/* ICON SIZE (no glow, clean contrast) */
 .skill-icon {
-  font-size: 2.2rem;
+  font-size: 2.3rem;
 }
-
-/* Icon normal colors (no glow) */
-.react { color: #61dafb; }
-.js { color: #f7df1e; }
-.java { color: #ff8c00; }
-.spring { color: #6db33f; }
-.mysql { color: #00b8ff; }
-.html { color: #ff5722; }
-.css { color: #2965f1; }
-.bt { color: #9b59ff; }
-.git { color: #f1502f; }
-.json { color: #f0c674; }
-
-.lead, p, h1, h2, h3, h4, h5 {
-  color: #fff !important;
-}
-

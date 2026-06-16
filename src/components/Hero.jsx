@@ -35,7 +35,7 @@ function Hero() {
       <div className="hero-about fade-up d-flex flex-column flex-md-row align-items-center justify-content-center gap-5">
 
         {/* PHOTO LEFT SIDE */}
-        <div className="about-left text-center">
+        <div className="about-left text-center">~
           <div className="img-frame hover-frame">
             <img src={profilePic} className="about-img" alt="Dinesh" />
           </div>
