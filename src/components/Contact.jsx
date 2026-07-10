@@ -30,28 +30,24 @@ function Contact() {
   };
 
   return (
-    <div 
-      className="bento-cell span-12 d-flex flex-column flex-md-row gap-5 justify-content-between align-items-center" 
-      data-aos="fade-up"
-      style={{
-        background: "var(--accent)", 
-        color: "var(--accent-text)", 
-        border: "none"
-      }}
-    >
+    <div id="contact" className="bento-cell span-12 d-flex flex-column flex-md-row gap-5 justify-content-between align-items-center" data-aos="fade-up">
       <div className="flex-grow-1" style={{ maxWidth: "500px" }}>
-        <h2 style={{ fontSize: "3rem", marginBottom: "16px", textTransform: "uppercase", color: "var(--accent-text)" }}>Have a Question?</h2>
-        <p style={{ fontSize: "1.1rem", color: "rgba(223, 220, 213, 0.8)", fontWeight: "500" }}>
+        <h2 style={{ fontSize: "2.5rem", fontWeight: "700", marginBottom: "16px", color: "var(--text)" }}>Have a Question?</h2>
+        <p style={{ fontSize: "1.05rem", color: "var(--subtext)", fontWeight: "400", lineHeight: "1.7" }}>
           I'm currently open for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
         </p>
         
         <div className="mt-5 d-flex gap-4">
-          <a href="https://linkedin.com/in/dinesh-johnson" style={{ color: "var(--accent-text)", textDecoration: "none", fontWeight: "700", letterSpacing: "1px", textTransform: "uppercase" }}>LinkedIn</a>
-          <a href="https://github.com/Dinesh-Johnson" style={{ color: "var(--accent-text)", textDecoration: "none", fontWeight: "700", letterSpacing: "1px", textTransform: "uppercase" }}>GitHub</a>
+          <a href="https://linkedin.com/in/dinesh-johnson" className="d-flex align-items-center gap-2 text-decoration-none" style={{ color: "var(--subtext)", fontWeight: "600", transition: "color 0.2s" }} onMouseOver={(e) => e.target.style.color = "var(--accent)"} onMouseOut={(e) => e.target.style.color = "var(--subtext)"}>
+            <i className="bi bi-linkedin fs-5"></i> LinkedIn
+          </a>
+          <a href="https://github.com/Dinesh-Johnson" className="d-flex align-items-center gap-2 text-decoration-none" style={{ color: "var(--subtext)", fontWeight: "600", transition: "color 0.2s" }} onMouseOver={(e) => e.target.style.color = "var(--accent)"} onMouseOut={(e) => e.target.style.color = "var(--subtext)"}>
+            <i className="bi bi-github fs-5"></i> GitHub
+          </a>
         </div>
       </div>
 
-      <div style={{ flexGrow: 1, width: "100%", maxWidth: "500px" }}>
+      <div style={{ flexGrow: 1, width: "100%", maxWidth: "500px", background: "var(--bg-secondary)", padding: "32px", borderRadius: "16px", border: "1px solid var(--card-border)" }}>
         <form onSubmit={submitForm}>
           <div className="mb-3">
             <input 
@@ -59,7 +55,7 @@ function Contact() {
               placeholder="Your Name" 
               name="name" 
               required
-              style={{ background: "rgba(0,0,0,0.1)", color: "var(--accent-text)", padding: "16px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.1)" }}
+              style={{ background: "var(--bg)", color: "var(--text)", padding: "16px", borderRadius: "8px", border: "1px solid var(--card-border)" }}
             />
           </div>
           <div className="mb-3">
@@ -69,7 +65,7 @@ function Contact() {
               placeholder="Your Email" 
               name="email" 
               required
-              style={{ background: "rgba(0,0,0,0.1)", color: "var(--accent-text)", padding: "16px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.1)" }}
+              style={{ background: "var(--bg)", color: "var(--text)", padding: "16px", borderRadius: "8px", border: "1px solid var(--card-border)" }}
             />
           </div>
           <div className="mb-4">
@@ -79,29 +75,15 @@ function Contact() {
               rows="4" 
               name="message" 
               required
-              style={{ background: "rgba(0,0,0,0.1)", color: "var(--accent-text)", padding: "16px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.1)" }}
+              style={{ background: "var(--bg)", color: "var(--text)", padding: "16px", borderRadius: "8px", border: "1px solid var(--card-border)", resize: "none" }}
             ></textarea>
           </div>
           <button 
             type="submit"
-            className="btn w-100 py-3 mb-2"
-            style={{
-              background: "var(--card-bg)",
-              color: "var(--card-text)",
-              border: "none",
-              fontWeight: "800",
-              fontSize: "1.1rem",
-              borderRadius: "8px",
-              textTransform: "uppercase"
-            }}
+            className="btn-primary-custom w-100 py-3 mb-2 d-flex align-items-center justify-content-center gap-2"
           >
-            Send Message <i className="bi bi-send-fill ms-2"></i>
+            {result || "Send Message"} <i className="bi bi-send-fill"></i>
           </button>
-          {result && (
-            <div className="text-center mt-3" style={{ fontWeight: "600", fontSize: "0.95rem" }}>
-              {result}
-            </div>
-          )}
         </form>
       </div>
     </div>

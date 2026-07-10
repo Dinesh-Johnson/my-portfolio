@@ -1,31 +1,43 @@
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
-/* ===== BRUTALIST MONOCHROME THEME ===== */
+/* ===== PREMIUM NORDIC SLATE THEME ===== */
 :root {
-  --bg: #111111; /* Deep charcoal background */
-  --text: #dfdcd5; /* Light beige for main text outside cards */
-  --subtext: #a8a29e; /* Muted text outside cards */
+  --bg: #0B1120;
+  --bg-secondary: #131C2C;
+  --card-bg: #182433;
+  --accent-surface: #223247;
   
-  --card-bg: #dfdcd5; /* Primary Beige Cards */
-  --card-text: #1a1a1a; /* Dark text on beige cards */
-  --card-subtext: #57534e; /* Muted dark text on beige cards */
-  --card-border: #111111;
+  --text: #F8FAFC;
+  --subtext: #B8C3CF;
+  --muted: #8794A5;
   
-  --accent: #5b584d; /* Dark Olive accent card */
-  --accent-text: #dfdcd5;
+  --accent: #38BDF8;
+  --success: #22C55E;
   
-  --btn-bg: #c5c0b1; /* For inner buttons on beige cards */
-  
-  --accent-blue: #3b82f6; /* Keeping for minor links if needed */
+  --card-border: rgba(255, 255, 255, 0.05);
 }
 
 html, body {
-  background: var(--bg) !important;
+  /* Subtle, large radial gradient to give depth without obvious transitions */
+  background: radial-gradient(120% 120% at 50% -10%, #1a273a 0%, #111827 40%, #0B1120 100%) !important;
   color: var(--text) !important;
   margin: 0;
   padding: 0;
   font-family: "Inter", system-ui, sans-serif;
   overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Subtle noise texture */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 9999;
 }
 
 /* Kill Bootstrap default backgrounds */
@@ -37,55 +49,30 @@ html, body {
 .bento-container {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 20px;
+  gap: 24px;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 80px 24px;
 }
 
 /* Standard Bento Cell */
 .bento-cell {
   background: var(--card-bg);
-  color: var(--card-text);
+  color: var(--text);
   border: 1px solid var(--card-border);
-  border-radius: 16px; /* Sharper brutalist corners */
-  padding: 40px;
+  border-radius: 20px; 
+  padding: 48px;
   position: relative;
   overflow: hidden;
-  transition: transform 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
 }
 
-/* Mouse Tracking Glow Effect */
-.bento-cell::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(255, 255, 255, 0.15),
-    transparent 40%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.bento-cell:hover::before {
-  opacity: 1;
-}
-
-/* Content needs to be above the glow */
-.bento-cell > * {
-  position: relative;
-  z-index: 2;
-}
-
+/* Hover: Slight lift, soft shadow, subtle border brighten */
 .bento-cell:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); 
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Grid Spans for Desktop */
@@ -99,47 +86,88 @@ html, body {
 @media (max-width: 1024px) {
   .span-4 { grid-column: span 6; }
   .span-3 { grid-column: span 6; }
+  .bento-cell { padding: 40px; }
 }
 
 @media (max-width: 768px) {
   .bento-container {
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    gap: 16px;
+    padding: 24px;
+    gap: 20px;
   }
   .bento-cell {
-    padding: 24px;
-    border-radius: 12px;
+    padding: 32px;
+    border-radius: 16px;
   }
 }
 
 /* Typography Overrides */
 h1, h2, h3, h4, h5 {
-  font-weight: 800;
-  letter-spacing: -1px;
-  margin-bottom: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 1.25rem;
+  color: var(--text);
 }
 
 p {
-  color: var(--card-subtext);
-  line-height: 1.6;
+  color: var(--subtext);
+  line-height: 1.75;
+}
+
+/* Buttons */
+.btn-primary-custom {
+  background: var(--accent);
+  color: #0F172A; /* Dark contrast for accent */
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: none;
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary-custom:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+  color: #0F172A;
+}
+
+.btn-secondary-custom {
+  background: var(--bg-secondary);
+  color: var(--text);
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-secondary-custom:hover {
+  transform: translateY(-2px);
+  background: var(--accent-surface);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: var(--text);
 }
 
 /* Pill Badges */
 .pill-badge {
   display: inline-block;
-  padding: 6px 16px;
-  background: var(--btn-bg);
+  padding: 8px 16px;
+  background: var(--bg-secondary);
   border: 1px solid var(--card-border);
   border-radius: 40px;
   font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--card-text);
+  font-weight: 500;
+  color: var(--subtext);
+  transition: all 0.2s ease;
+}
+.pill-badge.active {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.25);
+  color: var(--accent);
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #7a7667; }
+::-webkit-scrollbar-thumb { background: var(--accent-surface); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--subtext); }

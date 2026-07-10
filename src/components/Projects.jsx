@@ -33,22 +33,20 @@ function Projects() {
       {projects.map((p, index) => (
         <div className="bento-cell span-4 d-flex flex-column p-0" key={index} data-aos="zoom-in" data-aos-delay={index * 100}>
           <div style={{ height: "180px", overflow: "hidden", borderBottom: "1px solid var(--card-border)" }}>
-            <img src={p.image} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(20%) sepia(20%)" }} />
+            <img src={p.image} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.75)", transition: "filter 0.3s ease" }} onMouseOver={(e) => e.currentTarget.style.filter="brightness(0.95)"} onMouseOut={(e) => e.currentTarget.style.filter="brightness(0.75)"} />
           </div>
           
-          <div className="p-4 d-flex flex-column flex-grow-1">
-            <h3 style={{ fontSize: "1.3rem", fontWeight: "900", marginBottom: "8px", textTransform: "uppercase" }}>{p.title}</h3>
-            <p style={{ fontSize: "0.95rem", flexGrow: 1, fontWeight: "500" }}>{p.desc}</p>
+          <div className="p-4 p-md-5 d-flex flex-column flex-grow-1">
+            <h3 style={{ fontSize: "1.25rem", marginBottom: "8px" }}>{p.title}</h3>
+            <p style={{ fontSize: "0.95rem", flexGrow: 1 }}>{p.desc}</p>
 
-            <div className="mb-3 d-flex flex-wrap gap-2">
+            <div className="mb-4 d-flex flex-wrap gap-2">
               {p.tech.map((t, i) => (
-                <span key={i} className="pill-badge" style={{ fontSize: "0.75rem", padding: "4px 10px" }}>{t}</span>
+                <span key={i} className="pill-badge" style={{ fontSize: "0.75rem", padding: "4px 12px" }}>{t}</span>
               ))}
             </div>
 
-            <a href={p.link} target="_blank" rel="noreferrer" className="btn w-100" style={{
-              background: "var(--card-text)", color: "var(--card-bg)", fontWeight: "700", borderRadius: "8px", textTransform: "uppercase"
-            }}>
+            <a href={p.link} target="_blank" rel="noreferrer" className="btn-secondary-custom text-center text-decoration-none w-100 mt-auto">
               <i className="bi bi-github me-2"></i> View Code
             </a>
           </div>
