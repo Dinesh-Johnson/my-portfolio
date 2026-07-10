@@ -1,16 +1,33 @@
 import React, { useState } from "react";
 
 function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [result, setResult] = useState("");
 
-  function handleChange(e) {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  }
+  const submitForm = async (event) => {
+    event.preventDefault();
+    setResult("Sending...");
+    
+    const formData = new FormData(event.target);
+    formData.append("access_key", "32dfe04a-0207-407e-bd74-dc58f3861c95");
 
-  function submitForm(e) {
-    e.preventDefault();
-    alert("Message sent! (Frontend only version)");
-  }
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setResult("Message Sent Successfully! ✅");
+        event.target.reset();
+      } else {
+        setResult(data.message);
+      }
+    } catch (error) {
+      setResult("Something went wrong. Please try again.");
+    }
+  };
 
   return (
     <div 
@@ -41,7 +58,6 @@ function Contact() {
               className="form-control" 
               placeholder="Your Name" 
               name="name" 
-              onChange={handleChange} 
               required
               style={{ background: "rgba(0,0,0,0.1)", color: "var(--accent-text)", padding: "16px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.1)" }}
             />
@@ -52,7 +68,6 @@ function Contact() {
               className="form-control" 
               placeholder="Your Email" 
               name="email" 
-              onChange={handleChange} 
               required
               style={{ background: "rgba(0,0,0,0.1)", color: "var(--accent-text)", padding: "16px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.1)" }}
             />
@@ -63,13 +78,13 @@ function Contact() {
               placeholder="Your Message" 
               rows="4" 
               name="message" 
-              onChange={handleChange}
               required
               style={{ background: "rgba(0,0,0,0.1)", color: "var(--accent-text)", padding: "16px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.1)" }}
             ></textarea>
           </div>
           <button 
-            className="btn w-100 py-3"
+            type="submit"
+            className="btn w-100 py-3 mb-2"
             style={{
               background: "var(--card-bg)",
               color: "var(--card-text)",
@@ -82,6 +97,11 @@ function Contact() {
           >
             Send Message <i className="bi bi-send-fill ms-2"></i>
           </button>
+          {result && (
+            <div className="text-center mt-3" style={{ fontWeight: "600", fontSize: "0.95rem" }}>
+              {result}
+            </div>
+          )}
         </form>
       </div>
     </div>
