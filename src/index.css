@@ -14,7 +14,7 @@
   --accent: #38BDF8;
   --success: #22C55E;
   
-  --card-border: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.08);
 }
 
 html, body {
@@ -61,18 +61,19 @@ body::after {
   color: var(--text);
   border: 1px solid var(--card-border);
   border-radius: 20px; 
-  padding: 48px;
+  padding: 40px;
   position: relative;
   overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+  transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+  /* Very soft ambient shadow */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
 }
 
-/* Hover: Slight lift, soft shadow, subtle border brighten */
+/* Hover: Slight lift, soft shadow, slightly brighter border */
 .bento-cell:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); 
-  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); 
+  border-color: rgba(255, 255, 255, 0.08); /* Slightly brighter than the 0.05 base */
 }
 
 /* Grid Spans for Desktop */
@@ -86,7 +87,7 @@ body::after {
 @media (max-width: 1024px) {
   .span-4 { grid-column: span 6; }
   .span-3 { grid-column: span 6; }
-  .bento-cell { padding: 40px; }
+  .bento-cell { padding: 32px; }
 }
 
 @media (max-width: 768px) {
@@ -97,7 +98,7 @@ body::after {
     gap: 20px;
   }
   .bento-cell {
-    padding: 32px;
+    padding: 24px;
     border-radius: 16px;
   }
 }
@@ -105,14 +106,15 @@ body::after {
 /* Typography Overrides */
 h1, h2, h3, h4, h5 {
   font-weight: 700;
-  letter-spacing: -0.5px;
-  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em; /* Tighter, more premium letter spacing */
+  margin-bottom: 1rem;
   color: var(--text);
 }
 
 p {
   color: var(--subtext);
-  line-height: 1.75;
+  line-height: 1.7; /* Increased line-height for readability */
+  font-weight: 400;
 }
 
 /* Buttons */

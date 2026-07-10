@@ -78,22 +78,22 @@ function Personality() {
 
   return (
     <div className="bento-cell span-8 d-flex flex-column justify-content-center" data-aos="fade-up">
-      <h3 style={{ fontSize: "1.75rem", marginBottom: "32px" }}>Beyond the Code</h3>
+      <h3 style={{ fontSize: "1.75rem", marginBottom: "40px", letterSpacing: "-0.01em" }}>Beyond the Code</h3>
 
-      <div className="d-flex align-items-center gap-4">
-        <div className="d-flex flex-column gap-3">
+      <div className="d-flex flex-column flex-md-row align-items-center gap-4">
+        <div className="d-flex flex-md-column gap-3 mb-4 mb-md-0">
           {facts.map((fact, index) => (
             <button 
               key={index}
               className="btn rounded-circle"
               onClick={() => handleCategoryChange(index)}
               style={{
-                width: '60px', height: '60px', fontSize: '1.5rem',
+                width: '64px', height: '64px', fontSize: '1.5rem',
                 background: activeFact === index ? 'var(--accent)' : 'var(--bg-secondary)',
                 color: activeFact === index ? '#0F172A' : 'var(--text)',
                 border: activeFact === index ? 'none' : `1px solid var(--card-border)`,
-                transition: 'transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease',
-                boxShadow: activeFact === index ? '0 4px 12px rgba(56, 189, 248, 0.25)' : 'none',
+                transition: 'transform 250ms ease, background 250ms ease, box-shadow 250ms ease',
+                boxShadow: activeFact === index ? '0 8px 20px rgba(56, 189, 248, 0.25)' : 'none',
                 transform: activeFact === index ? 'scale(1.05)' : 'scale(1)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0
               }}
@@ -103,19 +103,19 @@ function Personality() {
           ))}
         </div>
 
-        <div style={{ flexGrow: 1, background: "var(--bg-secondary)", padding: "32px", borderRadius: "16px", border: "1px solid var(--card-border)" }}>
-          <h4 style={{ color: "var(--text)", fontSize: "1.25rem", fontWeight: "700", marginBottom: "16px" }}>
+        <div style={{ flexGrow: 1, background: "var(--bg-secondary)", padding: "40px", borderRadius: "16px", border: "1px solid var(--card-border)", minHeight: "220px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <h4 style={{ color: "var(--text)", fontSize: "1.3rem", fontWeight: "700", marginBottom: "20px", letterSpacing: "-0.01em" }}>
             {facts[activeFact].title}
           </h4>
           <p style={{ 
             margin: 0, 
             fontWeight: "400", 
             color: "var(--subtext)",
-            minHeight: "60px",
-            fontSize: "1rem",
+            minHeight: "80px",
+            fontSize: "1.05rem",
             lineHeight: "1.7",
             opacity: fade ? 1 : 0,
-            transition: "opacity 0.3s ease"
+            transition: "opacity 300ms ease"
           }}>
             "{facts[activeFact].quotes[quoteIndex]}"
           </p>
