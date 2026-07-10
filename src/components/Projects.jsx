@@ -7,99 +7,54 @@ function Projects() {
   const projects = [
     {
       title: "MilkLore",
-      desc: "A full-stack dairy management system for farmers & admins with milk collection, product management, and 15-day automated payments.",
-      tech: ["Spring MVC", "Spring Security", "Hibernate", "JSP", "MySQL"],
+      desc: "Full-stack dairy management system with 15-day automated payments.",
+      tech: ["Spring MVC", "Hibernate", "MySQL"],
       link: "https://github.com/Dinesh-Johnson/MilkLore",
       image: milkloreImg,
     },
     {
       title: "App Registration",
-      desc: "A user registration and authentication system using Spring Boot, JPA, Hibernate, and JSP with complete validation and profile management.",
-      tech: ["Spring Boot", "JPA", "Hibernate", "JSP", "MySQL"],
+      desc: "User auth system with complete validation and profile management.",
+      tech: ["Spring Boot", "JPA", "MySQL"],
       link: "https://github.com/Dinesh-Johnson/JPA/tree/main/app-registration",
       image: appRegImg,
     },
     {
-      title: "Passport Seva Registration",
-      desc: "A Passport Seva web application built using Java, Spring MVC, Hibernate ORM, MySQL, JSP, JSTL with full MVC architecture.",
-      tech: ["Spring MVC", "Hibernate", "JSP", "JSTL", "MySQL"],
+      title: "Passport Seva",
+      desc: "Passport registration web application built using Java.",
+      tech: ["Spring MVC", "JSTL", "MySQL"],
       link: "https://github.com/Dinesh-Johnson/JPA/tree/32a7a1676c0f6664cab3d01f3d17f899ab634486/passport-seva",
       image: passportImg,
     },
   ];
 
   return (
-    <section id="projects" className="container py-5">
-      <h2 className="text-center mb-5 fw-bold">My Projects</h2>
-
-      <div className="row g-4">
-        {projects.map((p, index) => (
-          <div
-            className="col-md-4 d-flex"
-            key={index}
-            data-aos="zoom-in"
-          >
-            <div className="card shadow-lg border-0 h-100 project-card">
-              <div className="project-img-wrapper">
-                <img
-                  src={p.image}
-                  className="card-img-top"
-                  alt={p.title}
-                />
-              </div>
-
-              <div className="card-body d-flex flex-column">
-                <h5 className="card-title fw-bold">{p.title}</h5>
-                <p>{p.desc}</p>
-
-                <div className="mt-2 mb-3">
-                  {p.tech.map((t, i) => (
-                    <span
-                      key={i}
-                      className="badge bg-primary me-2 mb-2"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                <a
-                  href={p.link}
-                  target="_blank"
-                  className="btn btn-dark mt-auto w-100"
-                >
-                  GitHub Repo
-                </a>
-              </div>
-            </div>
+    <>
+      {projects.map((p, index) => (
+        <div className="bento-cell span-4 d-flex flex-column p-0" key={index} data-aos="zoom-in" data-aos-delay={index * 100}>
+          <div style={{ height: "180px", overflow: "hidden", borderBottom: "1px solid var(--card-border)" }}>
+            <img src={p.image} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(20%) sepia(20%)" }} />
           </div>
-        ))}
-      </div>
+          
+          <div className="p-4 d-flex flex-column flex-grow-1">
+            <h3 style={{ fontSize: "1.3rem", fontWeight: "900", marginBottom: "8px", textTransform: "uppercase" }}>{p.title}</h3>
+            <p style={{ fontSize: "0.95rem", flexGrow: 1, fontWeight: "500" }}>{p.desc}</p>
 
-      {/* Card CSS */}
-      <style>
-        {`
-          .project-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-radius: 12px;
-          }
-          .project-card:hover {
-            transform: translateY(-4px);
-  box-shadow: none;
-          }
-          .project-img-wrapper {
-            height: 200px;
-            overflow: hidden;
-            border-radius: 12px 12px 0 0;
-          }
-          .project-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-        `}
-      </style>
-    </section>
+            <div className="mb-3 d-flex flex-wrap gap-2">
+              {p.tech.map((t, i) => (
+                <span key={i} className="pill-badge" style={{ fontSize: "0.75rem", padding: "4px 10px" }}>{t}</span>
+              ))}
+            </div>
+
+            <a href={p.link} target="_blank" rel="noreferrer" className="btn w-100" style={{
+              background: "var(--card-text)", color: "var(--card-bg)", fontWeight: "700", borderRadius: "8px", textTransform: "uppercase"
+            }}>
+              <i className="bi bi-github me-2"></i> View Code
+            </a>
+          </div>
+        </div>
+      ))}
+    </>
   );
 }
 
