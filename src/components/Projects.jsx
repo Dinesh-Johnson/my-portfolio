@@ -10,6 +10,7 @@ function Projects() {
       desc: "Full-stack dairy management system with 15-day automated payments.",
       tech: ["Spring MVC", "Hibernate", "MySQL"],
       link: "https://github.com/Dinesh-Johnson/MilkLore",
+      demo: "https://github.com/Dinesh-Johnson/MilkLore", // Placeholder for actual live demo
       image: milkloreImg,
     },
     {
@@ -46,9 +47,16 @@ function Projects() {
               ))}
             </div>
 
-            <a href={p.link} target="_blank" rel="noreferrer" className="btn-secondary-custom text-center text-decoration-none w-100 mt-auto">
-              <i className="bi bi-github me-2"></i> View Code
-            </a>
+            <div className="d-flex gap-2 mt-auto">
+              {p.demo && (
+                <a href={p.demo} target="_blank" rel="noreferrer" className="btn-primary-custom text-center text-decoration-none flex-grow-1" style={{ padding: "10px", fontSize: "0.9rem" }}>
+                  <i className="bi bi-box-arrow-up-right me-1"></i> Live Demo
+                </a>
+              )}
+              <a href={p.link} target="_blank" rel="noreferrer" className="btn-secondary-custom text-center text-decoration-none flex-grow-1" style={{ padding: "10px", fontSize: "0.9rem" }}>
+                <i className="bi bi-github me-1"></i> Code
+              </a>
+            </div>
           </div>
         </div>
       ))}

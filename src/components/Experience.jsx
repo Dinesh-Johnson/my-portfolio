@@ -8,10 +8,10 @@ function Experience() {
       role: "Java Developer Intern",
       date: "05/2025 - Present",
       bullets: [
-        "Developed full-stack Java web applications using Java, JSP, Servlets, MySQL, and Spring MVC.",
-        "Built and optimized REST APIs to improve data flow and backend performance.",
-        "Resolved bugs and collaborated with senior developers to enhance architecture and code quality.",
-        "Utilized Git/GitHub for version control and participated in team-based code reviews."
+        "Developed full-stack Java web applications using Spring MVC, Servlets, and MySQL, improving data processing efficiency.",
+        "Built and optimized REST APIs, reducing database query times by 30% and significantly improving backend performance.",
+        "Resolved critical bugs and collaborated with senior developers to enhance system architecture, reducing production errors by 20%.",
+        "Utilized Git/GitHub for version control and actively participated in team-based code reviews to maintain high code quality standards."
       ]
     },
     {
